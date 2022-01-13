@@ -1,0 +1,17 @@
+services:
+  app-is-today-holiday:
+    image: winking324/is-today-holiday:0.1.0
+    container_name: app-is-today-holiday
+    volumes:
+      - /data/log/app/is-today-holiday:/data/log/app/is-today-holiday
+      - /data/app/is-today-holiday/configs:/data/app/is-today-holiday/configs
+    environment:
+      - APP_NAME=is-today-holiday
+      - LOG_PATH=/data/log/app/is-today-holiday
+      - CONFIGS_PATH=/data/app/is-today-holiday/configs
+    networks:
+      - app.net
+    restart: always
+networks:
+  app.net:
+    external: true
